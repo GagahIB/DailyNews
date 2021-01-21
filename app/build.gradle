@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-platform-android'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "id.gagahib.newsapi"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures{
+        viewBinding = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.android.material:material:1.3.0-alpha01'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //testing libs
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+
+    //Dagger
+    implementation 'com.google.dagger:dagger:2.27'
+    kapt 'com.google.dagger:dagger-compiler:2.27'
+    implementation 'com.google.dagger:dagger-android:2.27'
+    implementation 'com.google.dagger:dagger-android-support:2.27'
+    kapt 'com.google.dagger:dagger-android-processor:2.27'
+    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.27'
+
+    //Logging
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation 'com.squareup.moshi:moshi:1.9.3'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.3'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+
+    //coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.7'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha04'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha04'
+
+    //RxJava, RxBinding, RxAndroid, RxBinding
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+
+    //MultiDex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //Multiple Status View
+    implementation 'com.classic.common:multiple-status-view:1.7'
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}
