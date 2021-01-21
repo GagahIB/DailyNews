@@ -148,16 +148,4 @@ class SourceActivity : BaseActivity() {
         })
     }
 
-    private fun searchChecker(){
-        RxTextView.afterTextChangeEvents(binding.etSearch)
-            .skipInitialValue()
-            .map {
-                it.view().text.toString()
-            }
-            .debounce(500, TimeUnit.MILLISECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
-
-    }
-
 }

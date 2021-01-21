@@ -142,8 +142,6 @@ class ArticleActivity : BaseActivity() {
             if(!loadMore)
                 binding.statusView.showEmpty()
         }
-
-        Log.d("Article", "Size : "+articleAdapter?.itemCount)
     }
 
     private fun navigateToDetailScreen(navigateEvent: Event<ArticleModel>) {
