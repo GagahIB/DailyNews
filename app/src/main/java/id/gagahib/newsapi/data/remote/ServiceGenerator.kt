@@ -1,6 +1,5 @@
 package id.gagahib.newsapi.data.remote
 
-import com.squareup.moshi.Moshi
 import id.gagahib.newsapi.utils.Constants.INSTANCE.BASE_URL
 
 import id.gagahib.newsapi.BuildConfig
@@ -9,7 +8,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -24,15 +22,15 @@ constructor() {
     private val contentType = "Content-Type"
     private val contentTypeValue = "application/json"
     private val xAPIKey = "x-api-key"
+
     private val xAPIKeyValue = "a48860710e004ec385502bf5e4535338"
-    private val xAPIKeyValueX = "f154b009eff1454988ab4b41db6ef6d7"
+    private val xAPIKeyValueX = "224ff1bee7dd4bd0af9fa1559e462fb4"
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit
 
     private var headerInterceptor = Interceptor { chain ->
         val original = chain.request()
-
         val request = original.newBuilder()
                 .header(contentType, contentTypeValue)
                 .header(xAPIKey, xAPIKeyValueX)

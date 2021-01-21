@@ -44,17 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
         android:background="@color/colorGray"/>
-    <com.classic.common.MultipleStatusView
-        android:id="@+id/statusView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:loadingView="@layout/layout_loading_view"
-        app:noNetworkView="@layout/layout_network_view"
-        app:errorView="@layout/layout_error_view"
-        app:emptyView="@layout/layout_empty_view">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true"
             android:background="@color/colorWhite">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,11 +90,19 @@
                             android:textColor="@color/colorGrayText"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/reviArticles"
+                <com.classic.common.MultipleStatusView
+                    android:id="@+id/statusView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="match_parent"
+                    app:loadingView="@layout/layout_loading_view"
+                    app:noNetworkView="@layout/layout_network_view"
+                    app:errorView="@layout/layout_error_view"
+                    app:emptyView="@layout/layout_empty_view">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/reviArticles"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </com.classic.common.MultipleStatusView>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </com.classic.common.MultipleStatusView>
 </LinearLayout>

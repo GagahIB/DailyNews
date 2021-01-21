@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding2.widget.RxTextView
 import id.gagahib.mylogin.ui.base.BaseActivity
+import id.gagahib.newsapi.NewsAPIApplication
 import id.gagahib.newsapi.R
+import id.gagahib.newsapi.data.error.Error.Companion.SERVER_LIMIT
+import id.gagahib.newsapi.data.error.Error.Companion.SERVER_LIMIT_100
 import id.gagahib.newsapi.data.remote.Resource
 import id.gagahib.newsapi.data.remote.model.CategoryModel
 import id.gagahib.newsapi.data.remote.model.CountryModel
@@ -86,7 +89,9 @@ class SourceActivity : BaseActivity() {
             is Resource.Success -> newsResponse.data?.let { bindListSource(newsResponse = it) }
             is Resource.DataError -> {
                 binding.statusView.showError()
-                newsResponse.errorCode?.let { sourceViewModel.showToastMessage(it) }
+                newsResponse.errorCode?.let {
+                    sourceViewModel.showToastMessage(it)
+                }
             }
         }
     }

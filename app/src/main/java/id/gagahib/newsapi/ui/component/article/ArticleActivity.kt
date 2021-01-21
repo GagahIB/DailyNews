@@ -18,7 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import id.gagahib.mylogin.ui.base.BaseActivity
+import id.gagahib.newsapi.NewsAPIApplication
 import id.gagahib.newsapi.R
+import id.gagahib.newsapi.data.error.Error
 import id.gagahib.newsapi.data.remote.Resource
 import id.gagahib.newsapi.data.remote.model.*
 import id.gagahib.newsapi.databinding.ActivityArticleBinding
@@ -93,8 +95,10 @@ class ArticleActivity : BaseActivity() {
             is Resource.Loading -> if (!loadMore){binding.statusView.showLoading()}
             is Resource.Success -> newsResponse.data?.let { bindListArticle(newsResponse = it) }
             is Resource.DataError -> {
-//                binding.statusView.showError()
-                newsResponse.errorCode?.let { articleViewModel.showToastMessage(it) }
+                binding.statusView.showError()
+                newsResponse.errorCode?.let {
+                    articleViewModel.showToastMessage(it)
+                }
             }
         }
     }
