@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
+import id.gagahib.core.remote.Resource
 
 class RemoteDataRepository @Inject
 constructor(private val remoteRepository: RemoteData, private val localRepository: LocalData) : DataRepositorySource {

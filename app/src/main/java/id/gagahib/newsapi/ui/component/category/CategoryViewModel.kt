@@ -1,16 +1,16 @@
-package id.gagahib.newsapi.ui.component.main
+package id.gagahib.newsapi.ui.component.category
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import id.gagahib.newsapi.data.error.ErrorManager
-import id.gagahib.newsapi.data.error.mapper.ErrorMapper
+import id.gagahib.newsapi.data.error.ErrorMapper
 import id.gagahib.newsapi.data.remote.DataRepositorySource
 import id.gagahib.newsapi.data.remote.model.CategoryModel
 import id.gagahib.newsapi.ui.base.BaseViewModel
-import id.gagahib.newsapi.utils.Event
+import id.gagahib.core.utils.Event
 import javax.inject.Inject
 
-class MainViewModel @Inject
+class CategoryViewModel @Inject
 constructor(private val dateRepositorySource: DataRepositorySource) : BaseViewModel() {
 
     override val errorManager

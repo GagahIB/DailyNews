@@ -1,26 +1,27 @@
 package id.gagahib.newsapi.ui.component.source
 
 import android.content.Context
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.gagahib.newsapi.data.error.ErrorManager
-import id.gagahib.newsapi.data.error.mapper.ErrorMapper
+import id.gagahib.newsapi.data.error.ErrorMapper
 import id.gagahib.newsapi.data.remote.DataRepositorySource
-import id.gagahib.newsapi.data.remote.Resource
 import id.gagahib.newsapi.data.remote.model.CategoryModel
 import id.gagahib.newsapi.data.remote.model.CountryModel
 import id.gagahib.newsapi.data.remote.model.NewsResponse
 import id.gagahib.newsapi.data.remote.model.SourceModel
 import id.gagahib.newsapi.ui.base.BaseViewModel
-import id.gagahib.newsapi.utils.Event
+import id.gagahib.core.utils.Event
 import id.gagahib.newsapi.utils.wrapEspressoIdlingResource
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.io.IOException
 import javax.inject.Inject
+import id.gagahib.core.remote.Resource
 
 class SourceViewModel @Inject
 constructor(private val dateRepositorySource: DataRepositorySource) : BaseViewModel() {
@@ -46,7 +47,7 @@ constructor(private val dateRepositorySource: DataRepositorySource) : BaseViewMo
     val showToast: LiveData<Event<Any>> get() = showToastPrivate
 
 
-    fun openSourceDetail(sourceModel: SourceModel) {
+    fun openSourceDetail(view: View, sourceModel: SourceModel) {
         _sourceDetail.value = Event(sourceModel)
     }
 

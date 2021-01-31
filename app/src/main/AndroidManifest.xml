@@ -16,12 +16,14 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="id.gagahib.newsapi.ui.component.main.MainActivity">
+        <activity android:name="id.gagahib.newsapi.ui.component.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <nav-graph android:value="@navigation/nav_graph" />
         </activity>
+        <activity android:name=".ui.component.category.CategoryActivity"/>
         <activity android:name=".ui.component.source.SourceActivity"/>
         <activity android:name=".ui.component.article.ArticleActivity"/>
         <activity android:name=".ui.component.webview.WebViewActivity">

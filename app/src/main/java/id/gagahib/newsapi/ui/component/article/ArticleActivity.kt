@@ -1,27 +1,17 @@
 package id.gagahib.newsapi.ui.component.article
 
-import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
-import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import id.gagahib.core.utils.StatusBarUtil
 import id.gagahib.mylogin.ui.base.BaseActivity
-import id.gagahib.newsapi.NewsAPIApplication
 import id.gagahib.newsapi.R
-import id.gagahib.newsapi.data.error.Error
-import id.gagahib.newsapi.data.remote.Resource
+import id.gagahib.core.remote.Resource
 import id.gagahib.newsapi.data.remote.model.*
 import id.gagahib.newsapi.databinding.ActivityArticleBinding
 import id.gagahib.newsapi.ui.ViewModelFactory
@@ -29,6 +19,9 @@ import id.gagahib.newsapi.ui.component.webview.WebViewActivity
 import id.gagahib.newsapi.utils.*
 import id.gagahib.newsapi.utils.Constants.INSTANCE.BUNDLE_ARTICLE
 import javax.inject.Inject
+import id.gagahib.core.utils.Event
+import id.gagahib.core.utils.observe
+import id.gagahib.core.utils.observeEvent
 
 
 class ArticleActivity : BaseActivity() {

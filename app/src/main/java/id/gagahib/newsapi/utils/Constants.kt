@@ -6,7 +6,6 @@ import id.gagahib.newsapi.data.remote.model.CategoryModel
 class Constants {
     companion object INSTANCE {
         const val SPLASH_DELAY = 3000
-        const val BASE_URL = "http://newsapi.org/v2/"
         const val BUNDLE_CATEGORY = "CATEGORY"
         const val BUNDLE_SOURCE = "SOURCE"
         const val BUNDLE_ARTICLE = "ARTICLE"

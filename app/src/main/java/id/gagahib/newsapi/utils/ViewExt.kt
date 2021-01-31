@@ -18,6 +18,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import id.gagahib.core.utils.Event
 import id.gagahib.newsapi.NewsAPIApplication
 import id.gagahib.newsapi.R
 
@@ -81,9 +82,9 @@ fun View.setupSnackbar(
 }
 
 fun View.showToast(
-        lifecycleOwner: LifecycleOwner,
-        snackbarEvent: LiveData<Event<Any>>,
-        timeLength: Int
+    lifecycleOwner: LifecycleOwner,
+    snackbarEvent: LiveData<Event<Any>>,
+    timeLength: Int
 ) {
 
     snackbarEvent.observe(lifecycleOwner, Observer { event ->

@@ -9,7 +9,6 @@ import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class CategoryModel(
-        @JvmSuppressWildcards
         val id: String = "",
         @JvmSuppressWildcards
         val name: String = "",

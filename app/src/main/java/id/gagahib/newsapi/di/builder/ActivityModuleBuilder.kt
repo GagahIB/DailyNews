@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package id.gagahib.newsapi.di
+package id.gagahib.newsapi.di.builder
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import id.gagahib.newsapi.di.module.MainActivityModule
 import id.gagahib.newsapi.ui.component.MainActivity
 import id.gagahib.newsapi.ui.component.article.ArticleActivity
 import id.gagahib.newsapi.ui.component.category.CategoryActivity
@@ -28,19 +29,19 @@ import id.gagahib.newsapi.ui.component.webview.WebViewActivity
 @Module
 abstract class ActivityModuleBuilder {
 
-    @ContributesAndroidInjector()
+    @ContributesAndroidInjector(modules = [MainActivityModule::class])
     abstract fun contributeMainActivity(): MainActivity
 
-    @ContributesAndroidInjector()
-    abstract fun contributeCategoryActivity(): CategoryActivity
-
-    @ContributesAndroidInjector()
-    abstract fun contributeSourceActivity(): SourceActivity
-
-    @ContributesAndroidInjector()
-    abstract fun contributeArticleActivity(): ArticleActivity
-
-    @ContributesAndroidInjector()
-    abstract fun contributeWebActivity(): WebViewActivity
+//    @ContributesAndroidInjector()
+//    abstract fun contributeCategoryActivity(): CategoryActivity
+//
+//    @ContributesAndroidInjector()
+//    abstract fun contributeSourceActivity(): SourceActivity
+//
+//    @ContributesAndroidInjector()
+//    abstract fun contributeArticleActivity(): ArticleActivity
+//
+//    @ContributesAndroidInjector()
+//    abstract fun contributeWebActivity(): WebViewActivity
 
 }

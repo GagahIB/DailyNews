@@ -15,9 +15,13 @@
  */
 
 package id.gagahib.newsapi.di
+import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 import id.gagahib.newsapi.NewsAPIApplication
+import id.gagahib.newsapi.di.builder.ActivityModuleBuilder
 import javax.inject.Singleton
 
 @Singleton
@@ -27,15 +31,23 @@ import javax.inject.Singleton
             AppModule::class,
             DataModule::class,
             ErrorModule::class,
-            ActivityModuleBuilder::class,
-            ViewModelModule::class
+            ActivityModuleBuilder::class
         ]
 )
+
+//interface AppComponent : AndroidInjector<NewsAPIApplication> {
+//    @Component.Builder
+//    abstract class Builder : AndroidInjector.Builder<NewsAPIApplication>()
+//}
+
+
 interface AppComponent {
+
     @Component.Builder
     interface Builder {
+        @BindsInstance
+        fun application(application: NewsAPIApplication): Builder
         fun build(): AppComponent
     }
-
-    fun inject(app: NewsAPIApplication)
+    fun inject(app: NewsAPIApplication) // Change to your custom app class
 }

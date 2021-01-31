@@ -1,7 +1,8 @@
 package id.gagahib.newsapi.data.error
 
-import id.gagahib.newsapi.data.error.mapper.ErrorMapper
 import javax.inject.Inject
+import id.gagahib.core.data.error.ErrorFactory
+import id.gagahib.core.data.error.Error
 
 class ErrorManager @Inject constructor(private val errorMapper: ErrorMapper) : ErrorFactory {
     override fun getError(errorCode: Int): Error {

@@ -15,14 +15,18 @@
  */
 package id.gagahib.newsapi.di
 
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.navGraphViewModels
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
+import id.gagahib.newsapi.R
 import id.gagahib.newsapi.ui.ViewModelFactory
 import id.gagahib.newsapi.ui.component.article.ArticleViewModel
-import id.gagahib.newsapi.ui.component.main.MainViewModel
+import id.gagahib.newsapi.ui.component.category.CategoryViewModel
 import id.gagahib.newsapi.ui.component.source.SourceViewModel
 import id.gagahib.newsapi.ui.component.webview.WebViewModel
 
@@ -38,8 +42,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+    @ViewModelKey(CategoryViewModel::class)
+    abstract fun bindMainViewModel(viewModel: CategoryViewModel): ViewModel
 
     @Binds
     @IntoMap

@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import dagger.android.AndroidInjection
+import dagger.android.support.DaggerAppCompatActivity
 import id.gagahib.newsapi.ui.base.BaseView
 import id.gagahib.newsapi.ui.base.BaseViewModel
 
-abstract class BaseActivity : AppCompatActivity(),
+abstract class BaseActivity : DaggerAppCompatActivity(),
     BaseView {
-
     protected lateinit var baseViewModel: BaseViewModel
 
     protected abstract fun initializeViewModel()

@@ -1,13 +1,13 @@
 package id.gagahib.newsapi.data.remote
 
+import id.gagahib.core.utils.Network.Utils.isConnected
 import id.gagahib.newsapi.NewsAPIApplication
-import id.gagahib.newsapi.data.error.Error.Companion.NETWORK_ERROR
-import id.gagahib.newsapi.data.error.Error.Companion.NO_INTERNET_CONNECTION
+import id.gagahib.core.data.error.Error.Companion.NETWORK_ERROR
+import id.gagahib.core.data.error.Error.Companion.NO_INTERNET_CONNECTION
+import id.gagahib.core.remote.Resource
 import id.gagahib.newsapi.data.remote.model.NewsResponse
 import id.gagahib.newsapi.data.remote.service.ApiService
-import id.gagahib.newsapi.utils.Network.Utils.isConnected
 import id.gagahib.newsapi.utils.wrapEspressoIdlingResource
-import id.gagahib.mylogin.data.remote.payload.NewsPayload
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject

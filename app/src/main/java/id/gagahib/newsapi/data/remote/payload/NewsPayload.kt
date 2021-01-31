@@ -5,19 +5,14 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class NewsPayload(
-    @JvmSuppressWildcards
     @SerializedName("category")
     val category: String = "",
-    @JvmSuppressWildcards
     @SerializedName("pageSize")
     val pageSize: Int = 10,
-    @JvmSuppressWildcards
     @SerializedName("page")
     val page: Int = 1,
-    @JvmSuppressWildcards
     @SerializedName("q")
     val q: String = "",
-    @JvmSuppressWildcards
     @SerializedName("sources")
     val sources: String = ""
 

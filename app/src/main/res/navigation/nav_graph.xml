@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/categoryFragment">
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="id.gagahib.newsapi.ui.component.category.CategoryFragment"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment_to_sourceFragment"
+            app:destination="@id/sourceFragment"
+            app:enterAnim="@anim/anim_in"
+            app:exitAnim="@anim/anim_out"
+            app:popEnterAnim="@anim/anim_in"
+            app:popExitAnim="@anim/anim_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/sourceFragment"
+        android:name="id.gagahib.newsapi.ui.component.source.SourceFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_source">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_sourceFragment_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/anim_in"
+            app:exitAnim="@anim/anim_out"
+            app:popEnterAnim="@anim/anim_in"
+            app:popExitAnim="@anim/anim_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="id.gagahib.newsapi.ui.component.article.ArticleFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_article">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_articleFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment"
+            app:enterAnim="@anim/anim_in"
+            app:exitAnim="@anim/anim_out"
+            app:popEnterAnim="@anim/anim_in"
+            app:popExitAnim="@anim/anim_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="id.gagahib.newsapi.ui.component.webview.WebViewFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_webview">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -4,17 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.jakewharton.rxbinding2.widget.RxTextView
+import id.gagahib.core.utils.StatusBarUtil
 import id.gagahib.mylogin.ui.base.BaseActivity
-import id.gagahib.newsapi.NewsAPIApplication
 import id.gagahib.newsapi.R
-import id.gagahib.newsapi.data.error.Error.Companion.SERVER_LIMIT
-import id.gagahib.newsapi.data.error.Error.Companion.SERVER_LIMIT_100
-import id.gagahib.newsapi.data.remote.Resource
+import id.gagahib.core.remote.Resource
 import id.gagahib.newsapi.data.remote.model.CategoryModel
 import id.gagahib.newsapi.data.remote.model.CountryModel
 import id.gagahib.newsapi.data.remote.model.NewsResponse
@@ -23,10 +19,14 @@ import id.gagahib.newsapi.databinding.ActivitySourceBinding
 import id.gagahib.newsapi.ui.ViewModelFactory
 import id.gagahib.newsapi.ui.component.article.ArticleActivity
 import id.gagahib.newsapi.utils.*
-import id.gagahib.newsapi.utils.Constants.INSTANCE.BUNDLE_SOURCE
-import io.reactivex.android.schedulers.AndroidSchedulers
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import id.gagahib.core.utils.Event
+import id.gagahib.core.utils.observe
+import id.gagahib.core.utils.observeEvent
 
 
 class SourceActivity : BaseActivity() {
@@ -60,7 +60,8 @@ class SourceActivity : BaseActivity() {
         binding.tvTitle.setCustomFonts()
         binding.tvHeader.setCustomFonts()
 
-        sourceViewModel.categoryData.value = intent.getSerializableExtra(Constants.BUNDLE_CATEGORY) as CategoryModel?
+        sourceViewModel.categoryData.value =
+            intent.getSerializableExtra(Constants.BUNDLE_CATEGORY) as CategoryModel?
         binding.toolbar.setNavigationOnClickListener { finish() }
 
         searchListener()
@@ -98,7 +99,8 @@ class SourceActivity : BaseActivity() {
 
     private fun bindListSource(newsResponse: NewsResponse) {
 
-        binding.tvSubHeader.text = String.format("Over %d+ trustworthy news sources", newsResponse.sources.size)
+        binding.tvSubHeader.text =
+            String.format("Over %d+ trustworthy news sources", newsResponse.sources.size)
 
         val layoutManager = LinearLayoutManager(this)
         binding.reviSources.layoutManager = layoutManager
@@ -109,7 +111,7 @@ class SourceActivity : BaseActivity() {
         sourceViewModel.generateOnceCountryCode(this)
     }
 
-    private fun handleCountryList(countries: List<CountryModel>){
+    private fun handleCountryList(countries: List<CountryModel>) {
         sourceAdapter?.countries = countries
         binding.reviSources.adapter = sourceAdapter
         binding.statusView.showContent()
@@ -129,23 +131,31 @@ class SourceActivity : BaseActivity() {
         binding.mainLayout.showToast(this, event, Snackbar.LENGTH_LONG)
     }
 
-    private fun searchListener(){
+    private fun searchListener() {
         binding.etSearch.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
 
-            override fun beforeTextChanged(s: CharSequence, start: Int,
-                                           count: Int, after: Int) {
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
             }
-
-            override fun onTextChanged(s: CharSequence, start: Int,
-                                       before: Int, count: Int) {
-                if(sourcesData.isNotEmpty()){
-                    val filteredSource = sourcesData.filter { it.name.contains(s, true) }
-                    sourceAdapter?.setItemData(filteredSource)
-                }
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                generateFilter(s.toString())
             }
         })
+
+    }
+
+    private fun generateFilter(keyword: String){
+        if (sourcesData.isNotEmpty()) {
+            val filteredSource = sourcesData.filter { it.name.contains(keyword, true) }
+            sourceAdapter?.setItemData(filteredSource)
+        }
     }
 
 }

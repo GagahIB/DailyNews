@@ -1,9 +1,10 @@
-package id.gagahib.newsapi.data.error.mapper
+package id.gagahib.newsapi.data.error
 
 import id.gagahib.newsapi.NewsAPIApplication
 import id.gagahib.newsapi.R
 import javax.inject.Inject
-import id.gagahib.newsapi.data.error.Error
+import id.gagahib.core.data.error.ErrorMapperInterface
+import id.gagahib.core.data.error.Error
 
 class ErrorMapper @Inject constructor() : ErrorMapperInterface {
 

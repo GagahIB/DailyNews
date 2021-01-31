@@ -1,2 +1,4 @@
-include ':app'
+include ':core'
+include(":app", ":framework", ":data")
+
 rootProject.name = "NewsAPI"

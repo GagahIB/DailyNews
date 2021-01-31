@@ -1,0 +1,7 @@
+<resources>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="network_error">Network error.\nCould get data, please try again!</string>
+    <string name="too_many_request">Too Many Requests. You made too many requests within a window of time and have been rate limited</string>
+    <string name="too_many_request_100">You have requested too many results. Developer accounts are limited to a max of 100 results</string>
+    <string name="something_error">Something went wrong!</string>
+</resources>

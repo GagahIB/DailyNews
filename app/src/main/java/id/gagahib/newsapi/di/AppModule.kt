@@ -16,14 +16,18 @@
 
 package id.gagahib.newsapi.di
 
+import android.content.Context
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import dagger.Module
 import dagger.Provides
+import id.gagahib.newsapi.R
 import id.gagahib.newsapi.data.local.LocalData
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
-@Module
+@Module(includes = [ViewModelModule::class])
 class AppModule {
     @Provides
     @Singleton

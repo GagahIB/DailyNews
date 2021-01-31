@@ -2,6 +2,7 @@ package id.gagahib.newsapi.data.remote
 
 import id.gagahib.newsapi.data.remote.model.NewsResponse
 import kotlinx.coroutines.flow.Flow
+import id.gagahib.core.remote.Resource
 
 interface DataRepositorySource {
 

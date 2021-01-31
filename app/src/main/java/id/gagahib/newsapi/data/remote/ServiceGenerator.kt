@@ -1,7 +1,5 @@
 package id.gagahib.newsapi.data.remote
 
-import id.gagahib.newsapi.utils.Constants.INSTANCE.BASE_URL
-
 import id.gagahib.newsapi.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -33,7 +31,7 @@ constructor() {
         val original = chain.request()
         val request = original.newBuilder()
                 .header(contentType, contentTypeValue)
-                .header(xAPIKey, xAPIKeyValueX)
+                .header(xAPIKey, xAPIKeyValue)
                 .method(original.method, original.body)
                 .build()
 
@@ -57,7 +55,7 @@ constructor() {
         val client = okHttpBuilder.build()
 
         retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL).client(client)
+                .baseUrl(BuildConfig.API_BASE).client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }

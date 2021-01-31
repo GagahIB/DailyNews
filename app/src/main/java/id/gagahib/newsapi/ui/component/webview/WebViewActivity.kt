@@ -7,6 +7,8 @@ import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import id.gagahib.core.utils.StatusBarUtil
+import id.gagahib.core.utils.observe
 import id.gagahib.mylogin.ui.base.BaseActivity
 import id.gagahib.newsapi.R
 import id.gagahib.newsapi.data.remote.model.ArticleModel
