@@ -17,8 +17,10 @@ package id.gagahib.newsapi.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import id.gagahib.newsapi.ui.component.MainActivity
 import id.gagahib.newsapi.ui.component.article.ArticleActivity
-import id.gagahib.newsapi.ui.component.main.MainActivity
+import id.gagahib.newsapi.ui.component.category.CategoryActivity
+import id.gagahib.newsapi.ui.component.category.CategoryFragment
 import id.gagahib.newsapi.ui.component.source.SourceActivity
 import id.gagahib.newsapi.ui.component.webview.WebViewActivity
 
@@ -26,9 +28,11 @@ import id.gagahib.newsapi.ui.component.webview.WebViewActivity
 @Module
 abstract class ActivityModuleBuilder {
 
-
     @ContributesAndroidInjector()
     abstract fun contributeMainActivity(): MainActivity
+
+    @ContributesAndroidInjector()
+    abstract fun contributeCategoryActivity(): CategoryActivity
 
     @ContributesAndroidInjector()
     abstract fun contributeSourceActivity(): SourceActivity
